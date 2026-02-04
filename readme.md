@@ -21,3 +21,17 @@ let drink = "Chai" // ts inference that 'drink' is string
 You explicitly tell TypeScript what kind of data a variable, parameter, or function can hold by adding a colon (:) followed by the type
 
 let age: number = 28 ; 
+
+## Union & Any 
+### Union:
+allow a variable to hold more than one specific type of data, using ( | ) to separate them 
+
+let id : string | number ; // id can be string or number 
+
+### Any: 
+that tells TypeScript to turn off type checking for a variable, allowing it to be literally any value (string, number, boolean, etc.)
+
+let data : any = '27' ; // the value for data can be Any 
+data = true ; 
+data = 99 ; 
+
