@@ -50,3 +50,17 @@ function check( id : string | number ){
 }
 ```
 
+
+## Type Assertion 
+Manually overriding TypeScript's guess because you are 100% sure about the data type.
+
+It is like telling TypeScript, "Trust me, I know what I'm doing," to force it to treat a value as a specific type
+```
+let value: any = "Hello";
+
+// You tell TS: "Treat this 'any' as a 'string' specifically."
+let length = (value as string).length;
+```
+
+## Never 
+The never type represents values that will never occur. It is mostly used for functions that always throw an error or never stop running (infinite loops)
