@@ -62,5 +62,43 @@ let value: any = "Hello";
 let length = (value as string).length;
 ```
 
-## Never 
+## Never (never)
 The never type represents values that will never occur. It is mostly used for functions that always throw an error or never stop running (infinite loops)
+```
+function throwError(msg: string): never {
+  throw new Error(msg); // This function never "returns" a value
+}
+```
+
+## Interface (interface)
+It is specifically used to define the structure of an object. Think of it as a "contract" or a blueprint that an object must follow
+
+1. Declaration Merging
+2. Easy To Extend (inheritance)
+```
+interface User {
+  name: string;
+  age: number;
+}
+
+const student: User = { 
+    name: "Rahul",
+    age: 22 
+};
+```
+
+## Intersection ( & )
+It combines multiple types into one. The new type must have all the properties from all the types you joined together
+
+```
+type Person = { name: string };
+type Employee = { id: number };
+
+// 'Staff' ke paas 'name' aur 'id' dono hona chahiye
+type Staff = Person & Employee;
+
+let worker: Staff = {
+  name: "Amit",
+  id: 101
+}; 
+```
