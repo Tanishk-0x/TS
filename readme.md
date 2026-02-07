@@ -102,3 +102,84 @@ let worker: Staff = {
   id: 101
 }; 
 ```
+
+## Objects 
+An object is a way to group related data together using key-value pairs. In TypeScript, you define the "shape" of the object to ensure it has the correct properties and types
+
+ ###### TS automatilcally infer the object
+
+```
+// Declaring Object Type 
+let tea : {
+    name : string ; 
+    price : number ; 
+    isHot : boolean ;
+}; 
+
+tea = {
+    name : "Ginger Tea" , 
+    price : 15 , 
+    isHot : true ,
+};
+```  
+
+
+## Partial Utitity Type ( Partial< Type > ) 
+It makes all properties of a type optional, so you can provide only the ones you need
+```
+// Partial Utility Type = Passing All Values is not required 
+type Chai = {
+    name : string ; 
+    price : number ; 
+    isHot : boolean ;
+}; 
+
+const updateChai = ( updates: Partial<Chai> ) => {
+    console.log("Updating Chai" , updates); 
+}
+
+updateChai({name : "ginger"}); 
+updateChai({}); 
+```
+
+## Required ( Required < Type > )
+It is the exact opposite of Partial. It takes a type with optional properties (?) and makes every single one of them mandatory
+```
+// Required = ? Optional but Required 
+type chaiOrder = {
+    name? : string ; 
+    quantity? : number ;  
+}; 
+
+const OrderChai = (order : Required<chaiOrder> ) => {
+    console.log("Ordering.." , order); 
+}
+
+OrderChai({name : "ginger" , quantity : 12 }); 
+```
+
+## Pick ( Pick< Type , "prop1"|"prop2"> )
+It creates a new type by selecting only the specific properties you need from an existing type
+```
+type chai = {
+    name : string ; 
+    price : number ; 
+    isHot : boolean ; 
+    ingredients : string[] ; 
+}; 
+
+// new type created with (name and price)
+type BasicChaiInfo = Pick< chai , "name" | "price" >; 
+```
+
+## Omit
+It creates a new type by taking an existing type and removing specific properties that you don't want to include
+```
+type ChaiNew = {
+    name : string ; 
+    price : number ;  
+    secretIngredients : string[] ; // OMIT 
+}; 
+// Newe type created without secretIngredients
+type PublicChai = Omit<ChaiNew , "secretIngredients">
+```
