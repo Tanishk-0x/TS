@@ -219,3 +219,20 @@ const menu : Chai[] = [
 // ReadOnly Array (Can't modify)
 const cities: readonly string[] = ["Delhi" , "Jodhpur"];
 ```
+
+## Tuple 
+A tuple is a special type of array with a fixed number of elements where each element has a predefined type in a specific order
+
+1. (type) aur (sequence) pehle se fix kr dete he
+2. Not flexible as array
+3. Order is must Important 
+4. Behind the scene, Tuple ek normal JavaScript Array hi hota hai
+```
+let ChaiTuple : [ string , number ]; 
+
+ChaiTuple = [ 15 , "Masala"]; // ❌
+ChaiTuple = [ "Masala" , 15 ]; // ✅
+
+// Named Tuple: show what the data actually is?
+let info = [ id: number , name: string ]; 
+```
