@@ -172,7 +172,7 @@ type chai = {
 type BasicChaiInfo = Pick< chai , "name" | "price" >; 
 ```
 
-## Omit
+## Omit ( Omit< Type , "prop"> )
 It creates a new type by taking an existing type and removing specific properties that you don't want to include
 ```
 type ChaiNew = {
@@ -182,4 +182,16 @@ type ChaiNew = {
 }; 
 // Newe type created without secretIngredients
 type PublicChai = Omit<ChaiNew , "secretIngredients">
+```
+
+##  Functions 
+Functions in TypeScript allow you to specify the data types for both the inputs (parameters) and the output (return type)
+```
+// 'a' and 'b' must be numbers, and it must return a number
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+const result = add(5, 10); // Sahi hai
+// add(5, "10"); // Error! "10" string hai
 ```
