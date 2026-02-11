@@ -195,3 +195,27 @@ function add(a: number, b: number): number {
 const result = add(5, 10); // Sahi hai
 // add(5, "10"); // Error! "10" string hai
 ```
+
+## Array 
+Collection of same data type values 
+```
+const ChaiFlavours : string[] = ["Ginger" , "Elaichi" , "Masala"]; 
+
+ChaiFlavours.push(20); // Error! Sirf string allow hain
+
+const ratings: Array<number> = [3.0, 4.0, 5.0]; 
+
+// Custom type array 
+type Chai = {
+    name : string ; 
+    price : number ; 
+}
+const menu : Chai[] = [
+    { name : "Elaichi" , price : 15 },
+    { name : "Masala" , price : 10 }, 
+    { name : "Jaggery" , price : 20 }, 
+];
+
+// ReadOnly Array (Can't modify)
+const cities: readonly string[] = ["Delhi" , "Jodhpur"];
+```
