@@ -236,3 +236,46 @@ ChaiTuple = [ "Masala" , 15 ]; // ✅
 // Named Tuple: show what the data actually is?
 let info = [ id: number , name: string ]; 
 ```
+
+## Enum (enum)
+An enum is a fixed list of named options that helps you avoid mistakes by limiting choices to a specific set
+
+Enums (Enumerations) ka kaam hai related values ke ek group ko "Named Constants" mein badalna. Iska matlab hai ki aap numbers ya strings ki jagah unhe ek readable naam de dete ho
+* (Fixed Options wali List)
+* Always in CAPS (standard practice)
+* When we have fixed options like (order status , 7 days of week) to organize this we use Enum
+```
+enum CupSize {
+    SMALL , 
+    MEDIUM , 
+    LARGE
+}; 
+
+const size = CupSize.LARGE ;
+```
+#### Numeric Enum:
+Ye default behavior hai. Agar aap koi value nahi doge, toh ye 0 se shuru hoga aur har agle option par +1 hota jayega
+```
+enum Status {
+    PENDING = 100 ,
+    SERVED , // Automattically set to 102 (+1)
+    CANCELLED , // 102
+};
+let track = Status.SERVED ; // 101 
+```
+
+#### String Enum:
+Yahan har key ki ek fixed string value hoti hai
+```
+enum ChaiType {
+    MASALA = "masala" ,
+    GINGER = "ginger"
+}
+
+function makeChai ( type : ChaiType ){
+    console.log(`Making ${type}`); 
+}
+
+makeChai(ChaiType.GINGER); // ✅
+makeChai("Ginger"); // ❌
+```
