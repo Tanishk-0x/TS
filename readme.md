@@ -85,6 +85,31 @@ const student: User = {
     name: "Rahul",
     age: 22 
 };
+
+// functions in interface 
+// defination of function 
+interface DiscountCalculator {
+    ( price : number ): number 
+}; 
+
+// actual usage
+const apply50 : DiscountCalculator = (p) => p*0.5 ;
+```
+
+#### Index Signature 
+Jab object ki keys ke naam fix na hon, par unka type fix karna ho
+```
+interface ChaiRatings {
+    // keys's name is not fixed 
+    [flavour : string]: number ;
+};
+
+const ratings : ChaiRatings = {
+    masala : 4.2 ,
+    ginger : 4.8 , 
+    elaichi : 3.7 ,
+}; 
+
 ```
 
 ## Intersection ( & )
@@ -406,3 +431,14 @@ class MyChai extends Drink {
     }
 }
 ```
+
+## Generic 
+Generics are placeholders that allow you to create functions, classes, or interfaces that work with any data type while still keeping the code safe and strict
+
+Generics ka matlab hai ek "Khali Seat" (Placeholder). Aap code likhte waqt ye nahi batate ki data string hoga ya number, balki aap ek placeholder <T> chhod dete ho. Jab aap us code ko use karte ho, tab aap decide karte ho ki wahan kaunsa type aayega
+
+###### Why??
+* Flexiblity : ek hi logic alag-alag data types par bina kisi error ke chal sake
+* Reusability , Type Safety , No Code Duplication 
+
+
