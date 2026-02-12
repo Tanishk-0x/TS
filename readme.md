@@ -433,12 +433,41 @@ class MyChai extends Drink {
 ```
 
 ## Generic 
-Generics are placeholders that allow you to create functions, classes, or interfaces that work with any data type while still keeping the code safe and strict
+Generics are placeholders that allow you to create functions, classes, or interfaces that work with any data type while still keeping the code safe and strict (General Functions)
 
 Generics ka matlab hai ek "Khali Seat" (Placeholder). Aap code likhte waqt ye nahi batate ki data string hoga ya number, balki aap ek placeholder <T> chhod dete ho. Jab aap us code ko use karte ho, tab aap decide karte ho ki wahan kaunsa type aayega
 
 ###### Why??
 * Flexiblity : ek hi logic alag-alag data types par bina kisi error ke chal sake
 * Reusability , Type Safety , No Code Duplication 
+```
+// <T> = PlaceHolder
+function WrapInArray <T> (item: T): T[] {
+    return [item] ; 
+}
+
+// Here decides what is the type? 
+WrapInArray("masala");  ✅
+WrapInArray(15);  ✅
+WrapInArray({ falvour : "ginger" });  ✅
+```
+
+#### Generic Interface: 
+```
+// Generic Interface 
+
+interface Box <T> {
+    content : T ; 
+}
+
+// using the generic interface 
+const numberBox : Box<number> = {
+    content : 10055  
+};
+
+const stringBox : Box<string> = {
+    content : "Masala" 
+}
+```
 
 
