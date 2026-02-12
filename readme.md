@@ -279,3 +279,130 @@ function makeChai ( type : ChaiType ){
 makeChai(ChaiType.GINGER); // ✅
 makeChai("Ginger"); // ❌
 ```
+
+## OOP 
+Way to organize your code by grouping related data and behavior together. Same as other language but more secure and safe
+
+#### Class / Object / Constructor : 
+1. Class = A blueprint or template used to create objects
+2. Object = A real instance or entity built from a class
+3. Constructor = A special function that initializes a new object's properties
+
+```
+// Creating Class 
+class Chai {
+    flavour : string ; 
+    price : number ; 
+
+    // Creating Constructor (parametrised contructor)
+    constructor ( flavour: string , price: number ){
+        this.flavour = flavour ; 
+        this.price = price ; 
+    }
+}
+
+// Creating Its Object 
+const masalaChai = new Chai( "Ginger" , 20) ;
+```
+
+#### Access Modifiers: 
+keywords that control who can see or change the data inside a class (permission settings)
+1. Public = The data is open to everyone (this is the default setting)
+2. Private = The data is "top secret" and can only be used inside that specific class
+3. Protected = The data is shared only with the class itself and its "children" (inherited classes)
+```
+class CHAI {
+    // accessible everywhere
+    public flavour: string = "Masala" ; 
+
+    // only accessible inside the class 
+    private secretIngredients: string = "Cardamom" ; 
+
+    // Method to access private member 
+    reveal(){
+        return this.secretIngredients ; // OK 
+    }
+
+    // accessible within the class & inherited class 
+    protected shopName: string = "Chai Corner" ; 
+}
+
+// SubClass (inherit CHAI Class)
+class Branch extends CHAI {
+    // method to access
+    getName(){
+        return this.shopName ; 
+    }
+}
+
+const c = new CHAI() ; 
+const secretIn = c.reveal() ; // SecretIngredients
+
+const obj = new Branch().getName ; // shopName
+```
+
+#### Controlled Gates: (getter / setter) 
+1. getter = A special method used to retrieve or read a private property
+2. setter = A special method used to update or change a private property
+```
+class MordernChai {
+    // private member 
+    private _sugar = 2 ; 
+
+    // getter : to retrieve the value 
+    get sugar(){
+        return this._sugar ; 
+    }
+
+    // setter : to set or update the value 
+    set sugar(value: number){
+        if(value > 5){
+            throw new Error("Too Sweet!"); 
+        }
+        // setting 
+        this._sugar = value ; 
+    }
+}
+
+const m = new MordernChai() ; 
+m.sugar = 4 ; 
+```
+
+#### Static
+The static keyword in TypeScript is used to define class members (properties or methods) that belong to the class itself rather than to its instances. These members are accessed directly through the class name without creating an object
+###### Key Points: 
+1. Class Level: Inhe call karne ke liye new ClassName() Object create karne ki zaroorat nahi hoti.
+2. Memory Efficient: Pure program mein inki sirf ek hi copy banti hai.
+3. No this: Static methods ke andar aap this keyword ka use nahi kar sakte (kyunki this object ko refer karta hai, aur static class ka hota hai).
+4. Shared State: Agar ek jagah se value badli, toh wo sabhi ke liye badal jayegi.
+```
+class EkChai {
+    static shopName = "Code Caffe" ; 
+
+    constructor(flavour: string) {
+        // .......
+    }
+}
+
+// Direct Access Not need to create object 
+console.log(EkChai.shopName) ;
+```
+
+#### Abstract Class 
+An abstract class is a restricted base class that cannot be used to create objects directly and serves as a blueprint for other classes to inherit from. (act as blueprint for other class).
+1. No Direct Object: Inka directly object create nhi kr sakte.
+2. Abstract Methods: Isme kuch aise methods ho sakte hain jinme code nahi hota, sirf naam hota hai (e.g., abstract sound()). Child classes ko ye methods likhna / define krna hi padta hai.
+3. Real Methods: Isme normal methods bhi ho sakte hain jinme logic likha ho, jo sab child classes share karengi.
+```
+abstract class Drink {
+    // abstract method 
+    abstract make() : void ; // only declaration 
+}
+
+// using the abstract class 
+class MyChai extends Drink {
+    make(){
+        console.log('Making chai'); 
+    }
+}
+```
