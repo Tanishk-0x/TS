@@ -513,3 +513,61 @@ const fetchData = async () => {
     }
 }
 ```
+
+## React With TS 
+React with TypeScript (React + TS) is simply React with a Safety Net. It ensures that the data moving between your components is exactly what you expect
+
+##### Core Pillars: 
+1. Props (The Rules): You define an interface to tell the component what data it must receive.
+2. State (The Memory): You use <Type> to tell React what kind of data the state will hold.
+
+###### Interface 
+```
+// 1. Define an Interface to describe the shape of your props
+interface GreetProps {
+  name: string;
+  age: number;
+}
+
+// 2. Use the interface in your function parameters
+const Greeting = ({ name, age }: GreetProps) => {
+  return (
+    <h1>
+      Hello, {name}! You are {age} years old.
+    </h1>
+  );
+};
+
+// 3. Usage: TypeScript will now warn you if you forget 'name' or 'age'
+export default function App() {
+  return <Greeting name="Alex" age={25} />;
+}
+```
+
+##### Generics  
+```
+import React from 'react';
+
+// 1. The <T> is a placeholder (like a variable for a type)
+interface BoxProps<T> {
+  content: T;
+}
+
+// 2. We tell the function to use the generic type <T>
+function Box<T>({ content }: BoxProps<T>) {
+  return <div>The content is: {content}</div>;
+}
+
+// 3. Usage: TypeScript "fills in" the type based on what you pass
+export default function App() {
+  return (
+    <>
+      {/* T becomes string */}
+      <Box content="Hello World" /> 
+      
+      {/* T becomes number */}
+      <Box content={100} /> 
+    </>
+  );
+}
+```
