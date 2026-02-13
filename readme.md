@@ -470,4 +470,46 @@ const stringBox : Box<string> = {
 }
 ```
 
+## .d.ts (type-declaration)
+A .d.ts file contains only type information. It describes the "shape" of JavaScript code so that TypeScript can provide autocomplete and error checking for code that wasn't originally written in TypeScript
+###### Key Features:
+1. No Implementation: You only write the types (signatures), not the function body.
+2. No JS Output: These files are used only during development. They are completely ignored during the final build (compilation) and do not produce a .js file.
+3. Ambient Declarations: They use the declare keyword to tell TS, "Trust me, this exists somewhere else (like in a global script or a JS library)
 
+## Web Request
+```
+import axios, {type AxiosResponse , isAxiosError} from "axios";
+
+// AxiosResponse = built in interface(Generics) provided by axios
+
+/* Jo data web request se aane wala he ya jo 
+send krenge dono ka structure define krte h */ 
+
+// structure...
+interface Todo {
+    userId : number ; 
+    id : number ; 
+    title : string ;
+    completed : boolean ;
+};
+
+const fetchData = async () => {
+    try {
+        // Generic 
+        const response : AxiosResponse<Todo> = 
+        await axios.get("https://jsonplaceholder.typicode.com/todos/1");
+        
+        console.log("Todo" , response.data); 
+    }
+    
+    catch (error: any) {
+        if( axios.isAxiosError(error) ){
+            console.log("Axios Error" , error.message);
+            if(error.response){
+                console.log(error.response.status); 
+            }
+        }
+    }
+}
+```
